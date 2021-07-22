@@ -1,0 +1,105 @@
+
+
+  .App {
+    display: flex;
+    justify-content: center;
+    width: 88%;
+    margin: 6% 6%;
+    flex-direction: column;
+
+}
+* {
+    box-sizing: border-box;
+}
+  
+html {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+}
+ 
+
+
+.inputContainer {
+  display: flex;
+  position: relative;
+  width: 93%;
+  margin: 0 5%;
+  justify-content: flex-end;
+}
+
+.imput:focus {
+  outline: none;
+}
+
+.input {
+  opacity: 0.8;
+  border-radius: 40px;
+  width: 33%;
+  height: 2.5em;
+  padding-left: 0.5em;
+}
+
+.iconSearch {
+  position: absolute;
+  right: 1%;
+  top: 0.5em
+}
+
+.imageContainer {
+  position: relative;
+  border-radius:  8px;
+  position: relative;
+  margin-bottom: 1.5em;
+
+ 
+  
+}
+
+.iconContainer {
+  background: white;
+  border-radius: 50%;
+  width: 3em;
+  height: 3em;
+  position: relative;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  bottom: 10%;
+  right: 15%;
+  position: absolute;
+  flex-shrink: 10;
+}
+
+.pageTitle {
+  font-size: 34px;
+  line-height: 41px;
+  color: #323ZF4B;
+  width: 100%;
+  margin: 0 0 2% 2.5%;
+  font-weight: 600;
+
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.allImages {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  
+}
+
+.column {
+  width: 30%;
+  
+}
+
+.iconHeart {
+  color: #1B3CEA;
+  font-size: 1.3em;
+}
