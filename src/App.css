@@ -28,7 +28,7 @@ html {
   justify-content: flex-end;
 }
 
-.imput:focus {
+input:focus {
   outline: none;
 }
 
@@ -46,10 +46,9 @@ html {
   top: 0.5em
 }
 
-.imageContainer {
+.pictureContainer {
   position: relative;
   border-radius:  8px;
-  position: relative;
   margin-bottom: 1.5em;
 
  
@@ -62,7 +61,7 @@ html {
   width: 3em;
   height: 3em;
   position: relative;
-  z-index: 10;
+  z-index: 3;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -75,19 +74,19 @@ html {
 .pageTitle {
   font-size: 34px;
   line-height: 41px;
-  color: #323ZF4B;
+  color: black;
   width: 100%;
   margin: 0 0 2% 2.5%;
   font-weight: 600;
 
 }
 
-.image {
+.picture {
   width: 100%;
   height: auto;
 }
 
-.allImages {
+.allPictures {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
@@ -102,4 +101,32 @@ html {
 .iconHeart {
   color: #1B3CEA;
   font-size: 1.3em;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5em;
+  background:  rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  z-index: 4;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.footerSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.9em;
+  color: #1B3CEA;
+
+}
+
+.footerText {
+  font-size: 0.5em;
+  margin-top: 0.5em;
 }

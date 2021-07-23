@@ -1,14 +1,27 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import searchPhotos from '../utils/searchPhotos'
-import { useEffect, useState } from "react"
+import searchPictures from '../utils/searchPictures'
+
+
  
-const InputSearch = ({ setImages }) => {
-    const [text, setText] = useState('')
+const InputSearch = ({ setPictures, setShowedPictures, text, setText }) => {
+   
 
     const handleSearch = () => {
-      searchPhotos(1, text).then(response => setImages(response))
+        if (text.length !== 0) {
+         searchPictures(1, text).then(response => setPictures(response))
+         setShowedPictures('searchedPic')
+        }
+    }
+
+    const handleKeyDown = event => {
+        if (text.length !== 0) {
+            if (event.keyCode === 13) {
+                searchPictures(1, text).then(response => setPictures(response))
+                setShowedPictures('searchedPic')
+            }
+        }
     }
 
    return (
@@ -18,6 +31,7 @@ const InputSearch = ({ setImages }) => {
             placeholder="Search pictures" 
             value={text} 
             onChange={(event) => setText(event.target.value)}
+            onKeyDown={(event) => handleKeyDown(event)}
             />
             <FontAwesomeIcon  className="iconSearch" icon={faSearch} onClick={() => handleSearch()} />
         </div>
