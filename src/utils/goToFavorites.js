@@ -1,19 +1,40 @@
-import React from 'react'
 
-    const goToFavorites = (url, like) => {
-        const unserialFavorites = localStorage.getItem('favorites')
+
+
+export const getFavorites = () => { 
+    const unserialFavorites = localStorage.getItem('favorites')
+    const favorites = unserialFavorites ? JSON.parse(unserialFavorites) : []
+
+    return favorites
+
+}
+
+// export   const goToFavorites = (picture, like) => {
+//        const favorites = getFavorites()
+
+//         if (!like) {
+//             favorites.push(picture)
+//         } else {
+//             const index = favorites.indexOf(picture);
+//             favorites.splice(index, 1)
+//         }
+
+//         localStorage.setItem('favorites', JSON.stringify(favorites))
         
-        const favorites = unserialFavorites ? JSON.parse(unserialFavorites) : []
+//     }
 
-        if (like) {
-            favorites.push(url)
-        } else {
-            const index = favorites.indexOf(url);
-            favorites.splice(index, 1)
-        }
+export const goToFavorites = (picture, like) => {
+    const favorites = getFavorites()
+    let newFavorites = [...favorites]
 
-        localStorage.setItem('favorites', JSON.stringify(favorites))
-        console.log(favorites)
+    if (!like){
+        newFavorites.push(picture)
+    } else {
+        newFavorites = newFavorites.filter(pic => pic.id !== picture.id)
     }
 
-    export default goToFavorites
+    localStorage.setItem('favorites', JSON.stringify(newFavorites))
+}
+
+     
+

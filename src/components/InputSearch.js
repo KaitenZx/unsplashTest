@@ -16,13 +16,16 @@ const InputSearch = ({ setPictures, setShowedPictures, text, setText }) => {
     }
 
     const handleKeyDown = event => {
-        if (text.length !== 0) {
-            if (event.keyCode === 13) {
-                searchPictures(1, text).then(response => setPictures(response))
-                setShowedPictures('searchedPic')
-            }
+        if (event.key === "Enter"){
+            handleSearch()
         }
-    }
+        // if (text.length !== 0) {
+        //     if (event.keyCode === 13) {
+        //         searchPictures(1, text).then(response => setPictures(response))
+        //         setShowedPictures('searchedPic')
+        //     }
+        }
+    
 
    return (
         <div className="inputContainer">

@@ -11,11 +11,15 @@ const getPictures = (page) => {
             },
         })
         .then(response => {
-            const data = response.data
-            const urls = []
-            
-            data.map(picture => urls.push(picture.urls.small))
-            return urls
+            const data = []
+            response.data.forEach((picture) => {
+                const picData = {
+                    url: picture.urls.small,
+                    id: picture.id,
+                }
+                data.push(picData)
+            })
+            return data
         })
         .catch(error => {
             console.error(error)
@@ -23,4 +27,5 @@ const getPictures = (page) => {
         })
     )
 }   
+
 export default getPictures

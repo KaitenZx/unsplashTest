@@ -11,12 +11,18 @@ const searchPictures = (page, text) => {
             },
         })
         .then(response => {
-            const data = response.data.results
-            const urls = []
+            const data = []
             
-            data.map(picture => urls.push(picture.urls.small))
-            return urls
+            response.data.results.forEach(picture => {
+                const picData = {
+                    url: picture.urls.small,
+                    id: picture.id,
+                }
+                data.push(picData)
+            })
+            return data
         })
+
         .catch(error => {
             console.error(error)
             return []

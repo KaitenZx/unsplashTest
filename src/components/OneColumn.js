@@ -1,16 +1,17 @@
 import React from "react"
 import Picture from "./Picture"
 
-const Column = ({ urls }) => {
+const OneColumn = ({ picArray }) => {
     return(
         <div className="column">
-            {urls.map((url, index) => {
+            {picArray.map((picture, index) => {
                 return (
-                    <Picture url={url} key={index} />
+                    <Picture picture={picture} key={index} />
                 )
             })}
         </div>
     )
 }
 
-export default Column
+
+export default OneColumn

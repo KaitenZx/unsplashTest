@@ -1,24 +1,16 @@
 import React from "react"
 import InputSearch from "../components/InputSearch"
 import PageTitle from "../components/PageTitle"
-import getPictures from "../utils/getPictures"
-import { useEffect, useState } from "react"
-import PicsContainer from "../components/PicsContainer"
+import { useState } from "react"
+import { getFavorites } from "../utils/goToFavorites";
+import PicsContainer from "../components/PicsContainer";
 
 
 
-
-const DailyPictures = () => {
+const Favorites= () => {
     const [text, setText] = useState('')
-    const [pictures, setPictures] = useState([])
-    const [showedPictures, setShowedPictures] = useState('dailyPic')
-
-    useEffect(() => {
-        if (pictures.length === 0 ) {
-        getPictures(1).then(response => setPictures(response) ) 
-        }
-    }, [])
-
+    const [pictures, setPictures] = useState(getFavorites)
+    const [showedPictures, setShowedPictures] = useState('favorites')
     
     return(
         <React.Fragment>
@@ -29,7 +21,7 @@ const DailyPictures = () => {
                 setText={setText}
             />
             <PageTitle 
-                  title={ showedPictures === 'searchedPic' ? "Searched photos" : "Daily pictures" }
+                  title={ showedPictures === 'searchedPic' ? "Searched photos" : "Favorites" }
             />
             {pictures.length > 0 
             ? <PicsContainer  
@@ -39,8 +31,10 @@ const DailyPictures = () => {
                 text={text}
             /> 
             : ''
-            }  
+            }
+
+              
         </React.Fragment>
     )
 }
-export default DailyPictures
+export default Favorites
