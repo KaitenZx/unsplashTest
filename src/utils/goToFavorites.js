@@ -9,32 +9,16 @@ export const getFavorites = () => {
 
 }
 
-// export   const goToFavorites = (picture, like) => {
-//        const favorites = getFavorites()
 
-//         if (!like) {
-//             favorites.push(picture)
-//         } else {
-//             const index = favorites.indexOf(picture);
-//             favorites.splice(index, 1)
-//         }
-
-//         localStorage.setItem('favorites', JSON.stringify(favorites))
-        
-//     }
 
 export const goToFavorites = (picture, like) => {
     const favorites = getFavorites()
     let newFavorites = [...favorites]
 
-    if (!like){
-        newFavorites.push(picture)
-    } else {
+    if (like){
         newFavorites = newFavorites.filter(pic => pic.id !== picture.id)
-    }
-
-    localStorage.setItem('favorites', JSON.stringify(newFavorites))
+    } else {
+        newFavorites.push(picture)
+        localStorage.setItem('favorites', JSON.stringify(newFavorites))
+    }   
 }
-
-     
-

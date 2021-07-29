@@ -7,10 +7,7 @@ import { BrowserRouter as  Router, Route, Switch } from "react-router-dom"
 import Favorites from './pages/Favorites';
 import Details from './pages/Details'
 
-const getPage = () => localStorage.getItem('page') ?? 'home'
-
 function App() {
-  const [page, setPage] = useState(getPage())
   return (
     <Router>
     <div className="App">
@@ -20,7 +17,7 @@ function App() {
             <Route exact path="/detailes/:id"><Details /></Route>
         </Switch>
       
-      <Footer  page={page} setPage={setPage} />
+      <Footer  />
         
     </div>
     </Router>

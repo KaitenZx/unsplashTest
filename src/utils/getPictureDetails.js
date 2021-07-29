@@ -14,15 +14,15 @@ const getPictureDetails = id => {
         })
         .then(response => {
             console.log(response)
-            
             const pic = response.data
             const picInfo = {
-                    likes: pic.likes,
-                    location: pic.location.country ?? pic.locatiom.title,
-                    downloads: pic.downloads,
-                    user: pic.user.name,
-                    url: pic.urls.full,
+                likes: pic.likes,
+                location: pic.location.country ?? pic.location.title,
+                downloads: pic.downloads,
+                user: pic.user.name,
+                url: pic.urls.full,
             }
+            console.log(picInfo, 'slslslslslsls')
             return picInfo
         })
         .catch(error => {

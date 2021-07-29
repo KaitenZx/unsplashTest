@@ -4,32 +4,27 @@ import { faUser as solidUser } from '@fortawesome/free-solid-svg-icons'
 import { faUser as regularUser } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons'
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 
-const savePage = page => localStorage.setItem('page', page)
 
- 
-
-const Footer = ({ page, setPage }) => {
+const Footer = () => {
     let history = useHistory();
+    let location = useLocation().pathname.substring(1) ?? 'home'
 
-    const handleClick = path  => {
-        setPage(path.substring(1))
-        savePage(path.substring(1))
-        history.push(path)
-    }
+    const handleClick = path  => {history.push(path)}
+    
 
     return (
         <div className="footer" >
             <div className="footerSection" onClick={() => handleClick('/home')}>
-                {page === 'home' 
+                {location === 'home' 
                     ? <FontAwesomeIcon icon={solidUser} /> 
                     : <FontAwesomeIcon icon={regularUser} />
                 }
                 <div className="footerText">Home</div>
             </div>
             <div className="footerSection" onClick={() => handleClick('/favorites')}>
-                {page === "favorites"
+                {location === "favorites"
                     ? <FontAwesomeIcon className="iconHeart" icon={solidHeart} />
                     : <FontAwesomeIcon className="iconHeart" icon={regularHeart} />
                 }   
