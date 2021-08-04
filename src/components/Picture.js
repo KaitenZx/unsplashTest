@@ -5,16 +5,13 @@ import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons'
 import { goToFavorites, getFavorites } from '../utils/goToFavorites'
 import { useHistory } from "react-router-dom"
 
-
-
 const IconHeart = ({ like, onClick }) => {
     return (
-        <div className="iconContainer" onClick={(event) => onClick(event)}>
-                {like 
-                    ? <FontAwesomeIcon className="iconHeart " icon={solidHeart} />
-                    : <FontAwesomeIcon  className="iconHeart" icon={regularHeart} /> 
-                }
-                
+        <div className="one-picture__icon" onClick={(event) => onClick(event)}>
+            {like 
+                ? <FontAwesomeIcon className="one-picture__icon--heart" icon={solidHeart} />
+                : <FontAwesomeIcon  className="one-picture__icon--heart" icon={regularHeart} /> 
+            }
         </div>
     )
 }
@@ -23,7 +20,6 @@ const isLike = picture => {
     const  favorites = getFavorites()
     return favorites.filter(pic => pic.id === picture.id).length > 0
 }
-
 
 const Picture = ({ picture }) => {
     const [like, setLike] = useState(isLike(picture))
@@ -35,13 +31,11 @@ const Picture = ({ picture }) => {
         goToFavorites(picture, like)
     }
 
-    const goToDetailes = () => {
-        history.push(`/detailes/${picture.id}`)
-    }
+    const goToDetailes = () => history.push(`/detailes/${picture.id}`)
 
     return (
-        <div className="pictureContainer" onClick={() => goToDetailes()}>
-            <img className="picture" src={picture.url} alt="here is the pic"/>
+        <div className="one-picture" onClick={() => goToDetailes()}>
+            <img className="one-picture__image" src={picture.url} alt="here is the pic"/>
             <IconHeart like={like}  onClick={(event) => handleClick(event)} />
             
         </div>

@@ -5,36 +5,31 @@ import { useState } from "react"
 import { getFavorites } from "../utils/goToFavorites";
 import PicsContainer from "../components/PicsContainer";
 
-
-
 const Favorites= () => {
     const [text, setText] = useState('')
     const [pictures, setPictures] = useState(getFavorites)
     const [showedPictures, setShowedPictures] = useState('favorites')
     
     return(
-        <React.Fragment>
+        <div className="page">
             <InputSearch 
                 setPictures={setPictures}
                 setShowedPictures={setShowedPictures}
                 text={text}
                 setText={setText}
             />
-            <PageTitle 
-                  title={ showedPictures === 'searchedPic' ? "Searched photos" : "Favorites" }
-            />
+            <PageTitle title={ showedPictures === 'searchedPic' ? "Searched photos" : "Favorites" } />
             {pictures.length > 0 
-            ? <PicsContainer  
-                pictures={pictures} 
-                setPictures={setPictures} 
-                showedPictures={showedPictures} 
-                text={text}
-            /> 
-            : ''
-            }
-
-              
-        </React.Fragment>
+                ? <PicsContainer  
+                    pictures={pictures} 
+                    setPictures={setPictures} 
+                    showedPictures={showedPictures} 
+                    text={text}
+                /> 
+                : ''
+            }   
+        </div>
     )
 }
+
 export default Favorites

@@ -1,8 +1,6 @@
-
 import axios from "axios"
 
 const getPictureDetails = id => {
-    console.log(id)
     return (
         axios({
             method: "get",
@@ -13,7 +11,6 @@ const getPictureDetails = id => {
             },
         })
         .then(response => {
-            console.log(response)
             const pic = response.data
             const picInfo = {
                 likes: pic.likes,
@@ -22,7 +19,6 @@ const getPictureDetails = id => {
                 user: pic.user.name,
                 url: pic.urls.full,
             }
-            console.log(picInfo, 'slslslslslsls')
             return picInfo
         })
         .catch(error => {

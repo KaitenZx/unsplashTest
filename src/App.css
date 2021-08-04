@@ -1,31 +1,29 @@
 
 
-  .App {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-
+.App {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
+
 * {
     box-sizing: border-box;
 }
   
 html {
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
 }
  
-
-
-.inputContainer {
+.search {
   display: flex;
   position: relative;
-  width: 93%;
-  margin: 0 5%;
+  width: 100%;
+  margin-bottom: 1em;
   justify-content: flex-end;
 }
 
@@ -33,30 +31,27 @@ input:focus {
   outline: none;
 }
 
-.input {
+.search__input {
   opacity: 0.8;
   border-radius: 40px;
-  width: 33%;
+  width: 65%;
   height: 2.5em;
   padding-left: 0.5em;
 }
 
-.iconSearch {
+.search__icon {
   position: absolute;
   right: 1%;
   top: 0.5em
 }
 
-.pictureContainer {
+.one-picture {
   position: relative;
   border-radius:  8px;
-  margin-bottom: 1.5em;
-
- 
-  
+  margin-bottom: 1.5em; 
 }
 
-.iconContainer {
+.one-picture__icon {
   background: white;
   border-radius: 50%;
   width: 3em;
@@ -72,7 +67,7 @@ input:focus {
   flex-shrink: 10;
 }
 
-.arrow {
+.details__icon--arrow {
   position: absolute;
   top: 8%;
   left: 3%;
@@ -81,7 +76,7 @@ input:focus {
   color: aliceblue;
 }
 
-.arrow:hover {
+.details__icon--arrow:hover {
   color: black;
   animation-name: pook;
   animation-duration: 1s;
@@ -92,38 +87,39 @@ input:focus {
   to {color: black;}
 }
 
-
-
-.pageTitle {
+.page-title {
   font-size: 34px;
   line-height: 41px;
   color: black;
   width: 100%;
-  margin: 0 0 2% 2.5%;
+  margin: 0 0 2% 0;
   font-weight: 600;
-
 }
 
-.picture {
+.one-picture__image {
   width: 100%;
   height: auto;
 }
 
-.allPictures {
+.columns {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-direction: row;
-  
 }
 
-.column {
+.one-column {
   width: 30%;
-  
 }
 
-.iconHeart {
+.one-picture__icon--heart {
   color: #1B3CEA;
   font-size: 1.3em;
+  cursor: pointer;
+}
+
+.footer__icon {
+  color: #1B3CEA;
+  font-size: 2em;
 }
 
 .footer {
@@ -141,52 +137,48 @@ input:focus {
 
 }
 
-.footerSection {
+.footer__section {
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-size: 1.9em;
   color: #1B3CEA;
-
 }
 
-.footerText {
-  font-size: 0.5em;
+.footer__text {
   margin-top: 0.5em;
 }
 
-.fullImage {
+.details__image {
   width: 60%;
- 
 }
 
-.detailsContainer {
-  width: 90%;
+.details {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   position: relative;
 }
 
-.info {
-  margin-top: 3em;
+.details__info {
+  margin: 3em 0 0 1.5em;
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-.columnInfo {
+.details__column {
   display: flex;
   width: 45%;
   flex-direction: column;
 }
 
-.titleInfo {
+.details__title {
   color: #9AA5B1;
   font-weight: bold;
+  margin-bottom: 1em;
 }
 
-.valueInfo {
+.details__value {
   margin-top: 0.5em;
   margin-bottom: 2em;
   color: #1F2933;
@@ -194,6 +186,80 @@ input:focus {
   font-weight: bolder;
 }
 
-.titleInfo {
-  margin-bottom: 1em;
+.page {
+  width: 94%;
+  margin: 3% 3%;
+}
+
+@media only screen and (max-width: 801px) {
+  .details {
+    flex-direction: column;
+  }
+
+  .details__info {
+    width: 100%;
+    margin: 0 0 3em 0; 
+  }
+
+  .details__image { 
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .page-title {
+    font-size: 2.5em;
+  }
+}
+
+
+@media only screen and (min-width: 351px) and (max-width: 800px) {
+  .details__column {
+    flex-direction: column;
+    width: 50%;
+  }
+  .details__title {
+    margin-top: 1.5em;
+  }
+
+  .footer {
+    height: 4em;
+  }
+  .footer__icon {
+    font-size: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  html {
+    font-size: 11px;
+  }
+  .search__input {
+    width: 100%;
+  }
+  .search__icon {
+    font-size: 14px;
+    right: 2%;
+  }
+  .page__title {
+    font-size: 2.4em;
+  } 
+
+  .details__column {
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .details__title {
+    margin-top: 1.5em;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .search__input {
+    width: 100%;
+ }
+  .one-column {
+    width: 47.5%;
+  }
 }

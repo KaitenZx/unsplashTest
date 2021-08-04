@@ -8,44 +8,39 @@ import MoonLoader  from "react-spinners/MoonLoader"
 
 const Details = () => {
     const [picData, setPicData] = useState(null)
-        let history = useHistory()
-        const id = history.location.pathname.substring(9)
-        console.log(picData)
+    let history = useHistory()
+    const id = history.location.pathname.substring(9)
 
-        useEffect(() => {
-            getPictureDetails(id).then(response => setPicData(response))
-        }, [])
+    useEffect(() => {
+        getPictureDetails(id).then(response => setPicData(response))
+    })
 
-        const handleClick = () => {
-            history.goBack()
-        }
-
+    const handleClick = () => history.goBack()
 
     return(
-        <div className="detailsContainer">
+        <div className="page details">
             { picData 
-               ? <React.Fragment>
-                    <img src={picData.url} alt="here is pic"  className="fullImage"/>
-                    <FontAwesomeIcon className="arrow" icon={faLongArrowAltLeft}  onClick={handleClick} />
+               ? <>
+                    <img src={picData.url} alt="here is pic"  className="details__image"/>
+                    <FontAwesomeIcon className="details__icon--arrow" icon={faLongArrowAltLeft}  onClick={handleClick} />
 
-                    <div className="info">
-                        <div className="columnInfo">
-                            <div className="titleInfo">Downloads</div>
-                            <div className="valueInfo">{picData.downloads ?? "-"}</div>
-                            <div className="titleInfo">User</div>
-                            <div className="valueInfo">{picData.user ?? "-"}</div>
+                    <div className="details__info">
+                        <div className="details__column">
+                            <div className="details__title">Downloads</div>
+                            <div className="details__value">{picData.downloads ?? "-"}</div>
+                            <div className="details__title">User</div>
+                            <div className="details__value">{picData.user ?? "-"}</div>
                         </div>
-                        <div className="columnInfo">
-                            <div className="titleInfo">Country</div>
-                            <div className="valueInfo">{picData.location ?? "-"}</div>
-                            <div className="titleInfo">Likes</div>
-                            <div className="valueInfo">{picData.likes ?? "-"}</div>
+                        <div className="details__column">
+                            <div className="details__title">Country</div>
+                            <div className="details__value">{picData.location ?? "-"}</div>
+                            <div className="details__title">Likes</div>
+                            <div className="details__value">{picData.likes ?? "-"}</div>
                         </div>
                     </div>
-                </React.Fragment> 
+                </> 
                 : <MoonLoader size={200} />
             }
-
         </div>
     )
 }

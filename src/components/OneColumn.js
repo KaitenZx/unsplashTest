@@ -3,7 +3,7 @@ import Picture from "./Picture"
 
 const OneColumn = ({ picArray }) => {
     return(
-        <div className="column">
+        <div className="one-column">
             {picArray.map((picture, index) => {
                 return (
                     <Picture picture={picture} key={index} />
@@ -12,6 +12,5 @@ const OneColumn = ({ picArray }) => {
         </div>
     )
 }
-
 
 export default OneColumn

@@ -8,15 +8,14 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const PicsContainer = ({ pictures, setPictures, showedPictures, text }) => {
     const [page, setPage] = useState(2)
   
-
     const fetchMoreData = () => {
         if (showedPictures === 'dailyPic') {
-     
             getPictures(page).then(response => {
                 setPictures([ ...pictures, ...response ])
                 setPage(page + 1)
             })         
         }
+
         if (showedPictures === 'searchedPic') {
             searchPictures(page, text).then(response => {
                 setPictures([ ...pictures, ...response])
@@ -25,24 +24,21 @@ const PicsContainer = ({ pictures, setPictures, showedPictures, text }) => {
         }
     }
 
-
     return (
-        <React.Fragment>
+        <>
             {showedPictures === 'searchedPic' || showedPictures === 'dailyPic'
-            ? <InfiniteScroll
-                dataLength={pictures.length}
-                next={fetchMoreData}
-                hasMore={true}
-                loader={<h4>Loading...</h4>}
-            >
-                <Columns pictures={pictures} />
-            </InfiniteScroll>
-
-            : <Columns pictures={pictures} />
-        }   
-    </React.Fragment>
-)
+                ? <InfiniteScroll
+                    dataLength={pictures.length}
+                    next={fetchMoreData}
+                    hasMore={true}
+                    loader={<h4>Loading...</h4>}
+                >
+                    <Columns pictures={pictures} />
+                </InfiniteScroll>
+                : <Columns pictures={pictures} />
+            }   
+        </>
+    )
 }
    
-
 export default PicsContainer

@@ -9,8 +9,6 @@ const Columns = ({ pictures }) => {
     let oneLeft = []
     let twoLeft = []
     
-
-    
     if (columns === 3) {
          zeroLeft = pictures.filter((pic, index) => index % 3 === 0)
          oneLeft = pictures.filter((pic, index) => index % 3 === 1)
@@ -20,14 +18,13 @@ const Columns = ({ pictures }) => {
         oneLeft = pictures.filter((pic, index) => index % 2 === 1)
     }
 
-
-
     return (
-        <div className="allPictures">
+        <div className="columns">
             <OneColumn picArray = {zeroLeft} />
             <OneColumn picArray = {oneLeft} />
-         { columns === 3 ? <OneColumn picArray = {twoLeft} /> : ''}
-         </div>
+            { columns === 3 ? <OneColumn picArray={twoLeft} /> : ''}
+        </div>
     )
 }
+
 export default Columns

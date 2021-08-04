@@ -10,9 +10,9 @@ const searchPictures = (page, text) => {
                 Authorization: "Client-ID bl06CguFjbta5yPXldLE11DgmJqUHw5ZYOPJvJdHhus"
             },
         })
+
         .then(response => {
             const data = []
-            
             response.data.results.forEach(picture => {
                 const picData = {
                     url: picture.urls.small,
@@ -29,4 +29,5 @@ const searchPictures = (page, text) => {
         })
     )
 }   
+
 export default searchPictures

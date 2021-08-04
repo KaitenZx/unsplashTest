@@ -6,29 +6,26 @@ import { faHeart as solidHeart} from '@fortawesome/free-solid-svg-icons'
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons'
 import { useHistory, useLocation } from "react-router-dom"
 
-
 const Footer = () => {
     let history = useHistory();
     let location = useLocation().pathname.substring(1) ?? 'home'
-
-    const handleClick = path  => {history.push(path)}
-    
+    const handleClick = path => {history.push(path)}
 
     return (
         <div className="footer" >
-            <div className="footerSection" onClick={() => handleClick('/home')}>
+            <div className="footer__section" onClick={() => handleClick('/home')}>
                 {location === 'home' 
-                    ? <FontAwesomeIcon icon={solidUser} /> 
-                    : <FontAwesomeIcon icon={regularUser} />
+                    ? <FontAwesomeIcon className="footer__icon" icon={solidUser} /> 
+                    : <FontAwesomeIcon className="footer__icon"  icon={regularUser} />
                 }
-                <div className="footerText">Home</div>
+                <div className="footer__text">Home</div>
             </div>
-            <div className="footerSection" onClick={() => handleClick('/favorites')}>
+            <div className="footer__section" onClick={() => handleClick('/favorites')}>
                 {location === "favorites"
-                    ? <FontAwesomeIcon className="iconHeart" icon={solidHeart} />
-                    : <FontAwesomeIcon className="iconHeart" icon={regularHeart} />
+                    ? <FontAwesomeIcon className="footer__icon" icon={solidHeart} />
+                    : <FontAwesomeIcon className="footer__icon" icon={regularHeart} />
                 }   
-                <div className="footerText">Favorites</div>
+                <div className="footer__text">Favorites</div>
             </div>
         </div>
     )
